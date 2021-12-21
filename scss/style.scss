@@ -27,7 +27,6 @@ body {
   font-weight: 400;
   font-size: rem(15px);
   font-family: 'Spartan', sans-serif;
-
 }
 
 main {
@@ -127,27 +126,39 @@ ul {
     }
 
     &-box {
-      background: $lt-gray-magenta;
-      border-radius: 10px;
-      padding: rem(20px);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: rem(15px);
-
-      @media (min-width: $break-md) {
-        text-align: center;
-      }
+      background: url('../img/icon-star.svg') 50% rem(18px) no-repeat,
+                  url('../img/icon-star.svg') calc(50% - rem(27px)) rem(18px) no-repeat,
+                  url('../img/icon-star.svg') calc(50% - rem(54px)) rem(18px) no-repeat,
+                  url('../img/icon-star.svg') calc(50% + rem(27px)) rem(18px) no-repeat,
+                  url('../img/icon-star.svg') calc(50% + rem(54px)) rem(18px) no-repeat,
+                  $lt-gray-magenta;
+      font-weight: 600;
+      color: $drk-magenta;
+      border-radius: rem(10px);
+      padding: rem(50px) rem(20px) rem(20px);
+      text-align: center;
 
       @media (min-width: $break-lg) {
-        flex-direction: row;
+        text-align: left;
+        padding: rem(20px) rem(20px) rem(20px) rem(165px);
         font-size: rem(14px);
-        gap: rem(20px);
         max-width: rem(445px);
+        background: url('../img/icon-star.svg') rem(20px) rem(18px) no-repeat,
+                    url('../img/icon-star.svg') rem(47px) rem(18px) no-repeat,
+                    url('../img/icon-star.svg') rem(74px) rem(18px) no-repeat,
+                    url('../img/icon-star.svg') rem(101px) rem(18px) no-repeat,
+                    url('../img/icon-star.svg') rem(128px) rem(18px) no-repeat,
+                    $lt-gray-magenta;
       }
 
       @media (min-width: $break-xl) {
-        padding: rem(20px) rem(32px);
+        padding: rem(20px) rem(32px) rem(20px) rem(178px);
+        background: url('../img/icon-star.svg') rem(33px) rem(18px) no-repeat,
+                    url('../img/icon-star.svg') rem(60px) rem(18px) no-repeat,
+                    url('../img/icon-star.svg') rem(87px) rem(18px) no-repeat,
+                    url('../img/icon-star.svg') rem(114px) rem(18px) no-repeat,
+                    url('../img/icon-star.svg') rem(141px) rem(18px) no-repeat,
+                    $lt-gray-magenta;
       }
 
       &:nth-child(2) {
@@ -160,16 +171,6 @@ ul {
           align-self: flex-end;
         }
       }
-    }
-
-    &-stars {
-      display: flex;
-      gap: 10px;
-    }
-
-    &-content {
-      font-weight: 600;
-      color: $drk-magenta;
     }
   }
 }
@@ -198,11 +199,16 @@ ul {
     min-height: rem(290px);
   }
 
-
   &__box {
+    display: grid;
+    grid-template-columns: rem(40px) 1fr;
+    grid-template-rows: rem(40px) 1fr;
+    grid-template-areas: "clientImg clientInfo"
+                          "clientQuote clientQuote";
+    gap: 24px;
+    color: $lt-gray-magenta;
     padding: rem(40px) rem(32px);
     background: $drk-magenta;
-    color: $lt-gray-magenta;
     border-radius: rem(10px);
 
     @media (min-width: $break-md) {
@@ -234,30 +240,30 @@ ul {
     }
   }
 
-  &__info {
-    display: flex;
-    align-items: center;
-    gap: rem(24px);
-    margin-bottom: rem(24px);
-  }
-
   &__img {
+    grid-area: clientImg;
     width: rem(40px);
     border-radius: 50%;
   }
 
-  &__heading {
-    font-size: inherit;
+  &__client {
+    grid-area: clientInfo;
+    font-weight: 700;
     color: $white;
-    margin-bottom: rem(5px);
-  }
 
-  &__subheading {
-    color: $sft-pink
+    &-role {
+      font-weight: initial;
+      margin-top: rem(5px);
+      color: $sft-pink;
+    }
   }
 
   &__quote {
-    line-height: 1.6;
+    grid-area: clientQuote;
+
+    &-text {
+      line-height: 1.6;
+    }
   }
 }
 
